@@ -63,11 +63,11 @@ gulp.task('server', () => {
                     pathRewrite: {
                       '^/vapi': ''
                     }
-                })
-                // proxy('/api',{
-                //     target: 'http://localhost:3000/',
-                //     chageOrigin: true,
-                // })
+                }),
+                proxy('/jsonServer',{
+                    target: 'http://localhost:3000',
+                    changeOrigin: true,
+                }),
             ]
         }))
 })
@@ -82,6 +82,12 @@ gulp.task('copyHtml', () => {
 gulp.task('copyIconfonts', () => {
     return gulp.src('./src/iconfonts/**/*')
         .pipe(gulp.dest('./dev/iconfonts'))
+})
+
+// copy iconfonts
+gulp.task('copyImages', () => {
+    return gulp.src('./src/images/**/*')
+        .pipe(gulp.dest('./dev/images'))
 })
 
 // copy libs
@@ -107,7 +113,7 @@ gulp.task('watch', () => {
 })
 
 // default task
-gulp.task('default', ['packScss', 'packJs', 'copyHtml', 'copyIconfonts', 'copyLibs', 'server', 'watch'], () => {
+gulp.task('default', ['packScss', 'packJs', 'copyHtml', 'copyIconfonts', 'copyImages',  'copyLibs', 'server', 'watch'], () => {
     console.log("All Works!!")
 })
 

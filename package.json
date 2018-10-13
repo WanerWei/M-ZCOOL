@@ -17,5 +17,8 @@
   "scripts": {
     "dev": "gulp",
     "mock": "json-server ./src/mocks/mock.js -r ./src/mocks/router.json"
+  },
+  "dependencies": {
+    "swiper": "^4.4.1"
   }
 }

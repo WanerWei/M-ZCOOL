@@ -1,0 +1,27 @@
+{{#each list}}
+<li>
+    <div>
+        <a href="##"><img src="{{cover1x}}" alt=""></a>
+    </div>
+    <div>
+        <section>   
+            <span class="title">{{title}}</span>
+        </section>   
+        <section>
+            <section>
+                <span class="name">{{creatorObj.username}}</span>
+            </section>
+            <section>
+                <div>
+                    <i class="yo-ico">&#xe6f3;</i>
+                    <span>{{viewCount}}</span>
+                </div>
+                <div>
+                    <i class="yo-ico i-2">&#xe696;</i>
+                    <span>{{recommendCount}}</span>
+                </div>
+            </section>
+        </section>
+    </div>
+</li>
+{{/each}}
