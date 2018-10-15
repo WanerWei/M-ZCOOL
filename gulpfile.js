@@ -51,7 +51,7 @@ gulp.task("packScss",() => {
 gulp.task('server', () => {
     return gulp.src('./dev')
         .pipe(server({
-            host: 'localhost',
+            host: '10.9.188.125',
             port: 8080,
             // 热更新
             livereload: true,
@@ -67,6 +67,14 @@ gulp.task('server', () => {
                 proxy('/jsonServer',{
                     target: 'http://localhost:3000',
                     changeOrigin: true,
+                }),
+                proxy('/yvpi',{
+                    target: 'http://weixin.m.yiguo.com',
+                    changeOrigin: true,
+                    ws : true,
+                    pathRewrite: {
+                      '^/yvpi': ''
+                    }
                 }),
             ]
         }))

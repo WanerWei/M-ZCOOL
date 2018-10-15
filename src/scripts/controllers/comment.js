@@ -1,29 +1,51 @@
 
-import contentTpl from '../views/content.html'
-import recommendListTpl from '../views/recommend-list.html'
-// import productionListTpl from '../views/production-list.html'
-// import articleListTpl from '../views/article-list.html'
+import recommendTpl from '../views/recommend.html'
+import productionTpl from '../views/production.html'
+import articleTpl from '../views/article.html'
+
+import commendListTpl from '../views/comment-list.html'
+
 import contentListModule from '../models/content'
+
 
 var pageNo = 1;
 var dataSource = [];
+var typeIndex;
+var listsType = ['recommend', 'production', 'article']
+var slideArr = ['.slide1', '.slide2', '.slide3']
+var ulListArr = ['.ulList1', '.ulList2', '.ulList3']
 
 const render = async (listType) => {
+    typeIndex = listsType.indexOf(listType)
+    let slide = slideArr[typeIndex]
+    
+    switch (typeIndex) {
+        case 0:
+            $(slide).html(recommendTpl);
+            break;
+        case 1:
+            $(slide).html(productionTpl);
+            break;
+        case 2:
+            $(slide).html(articleTpl);
+            break;
+        default:
+            break
+    }
 
-    $('main').html(contentTpl);
 
     $('.content').css('display','none')
     $('.loader').css('display','block')
     
-    
     let list  = dataSource = (await contentListModule[listType]()).data.content
+
     await renderList(list)
-    scroll()
+    scroll(slide)
 }
 
-const scroll = () => {
+const scroll = (slide) => {
     // better-scroll,一款解决移动端屏幕的插件
-    let posScroll = new BScroll('main',{
+    let posScroll = new BScroll(slide,{
         // 当 probeType 为 2 的时候，会在屏幕滑动的过程中实时的派发 scroll 事件
         probeType: 2,
         startY : -50
@@ -123,12 +145,28 @@ const scroll = () => {
     })
 }
 
-
 const renderList = async (list) => {
-    let template = Handlebars.compile(recommendListTpl)
-    let html = template({ list })
+    switch (typeIndex) {
+        case 0:
+            var template = Handlebars.compile(commendListTpl)
+            var html = template({ list })
+            $(ulListArr[typeIndex]).html(html)
+            break;
+        case 1:
+            var template = Handlebars.compile(commendListTpl)
+            var html = template({ list })
+            $(ulListArr[typeIndex]).html(html)
+            break;
+        case 2:
+            var template = Handlebars.compile(commendListTpl)
+            var html = template({ list })
+            $(ulListArr[typeIndex]).html(html)
+            break;
+        default:
+            break
+    }
+
     // ul插入模板
-    $('#ulList').html(html)
     $('.content').css('display','block')
     $('.loader').css('display','none')
 }

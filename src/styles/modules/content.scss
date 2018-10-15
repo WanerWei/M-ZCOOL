@@ -1,98 +1,109 @@
 
 .head-container{
     main{
-        .loader{
-            display: none;
-            position: absolute;
-            left:50%;
-            top: 35%;
-            width: .5rem;
-            height: .5rem;
-            margin-left: -0.25rem;
-            img{
-                width: 100%
-            }
-        }
-        .head,
-        .foot {
-            @include flexbox();
-            @include align-items(center);
-            @include justify-content(center);
-            height:.4rem;
-            &::after {
-                border: none;
-            }
-        }
-        .head{
-            margin-bottom: .1rem;
-        }
-        .foot{
-            margin-top: .1rem;
-        }
-        .head img,
-        .foot img {
-            width: .16rem;
-            height: .16rem;
-            transition: transform 150ms;
-            -webkit-transition: transform 150ms;
-        }
-        .head img{
-            @include transform(rotate(180deg));
-        }
-        .up {
-            transform: rotate(360deg)  !important;
-            -webkit-transform: rotate(360deg)  !important;
-        }
-        .down {
-            @include transform(rotate(180deg))
-        }
-        li{
-            height: 1.2rem;
+        .swiper-container{
+            padding-top:.1rem;
+            padding-bottom:.1rem;
+            height: 100%;
             width: 100%;
-            margin-bottom: .1rem;
-            background: #fff;
-            @include flexbox();
-            >div:nth-child(1){
-                width: 1.6rem;
+            .swiper-slide{
+                width: 100%;
+                padding-left: .1rem;
+                padding-right: .1rem;
+            }
+            .loader{
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: 35%;
+                width: .5rem;
+                height: .5rem;
+                margin-left: -0.25rem;
+                img{
+                    width: 100%
+                }
+            }
+            .head,
+            .foot {
+                @include flexbox();
+                @include align-items(center);
+                @include justify-content(center);
+                height:.4rem;
+                &::after {
+                    border: none;
+                }
+            }
+            .head{
+                margin-bottom: .1rem;
+            }
+            .foot{
+                margin-top: .1rem;
+            }
+            .head img,
+            .foot img {
+                width: .16rem;
+                height: .16rem;
+                transition: transform 150ms;
+                -webkit-transition: transform 150ms;
+            }
+            .head img{
+                @include transform(rotate(180deg));
+            }
+            .up {
+                transform: rotate(360deg)  !important;
+                -webkit-transform: rotate(360deg)  !important;
+            }
+            .down {
+                @include transform(rotate(180deg))
+            }
+            li{
                 height: 1.2rem;
-                margin-right: .15rem;
-                a{
-                    display: block;
+                // width: calc(100% - .2rem);
+                margin-bottom: .1rem;
+                background: #fff;
+                @include flexbox();
+                >div:nth-child(1){
                     width: 1.6rem;
                     height: 1.2rem;
-                    img{
-                        width: 100%;
+                    margin-right: .15rem;
+                    a{
+                        display: block;
+                        width: 1.6rem;
+                        height: 1.2rem;
+                        img{
+                            width: 100%;
+                        }
                     }
                 }
-            }
-            >div:nth-child(2){
-                @include flexbox();
-                @include flex-direction(column);
-                @include justify-content(space-between);
-                > section:nth-child(1){
-                    font-size: .16rem;
-                    color: #333;
-                    @include ellipsis(null, 2);
-                    line-height: .26rem;
-                    font-weight: bolder;
-                }
-                > section:nth-child(2){
+                >div:nth-child(2){
+                    @include flexbox();
+                    @include flex-direction(column);
+                    @include justify-content(space-between);
+                    > section:nth-child(1){
+                        font-size: .16rem;
+                        color: #333;
+                        @include ellipsis(null, 2);
+                        line-height: .26rem;
+                        font-weight: bolder;
+                    }
                     > section:nth-child(2){
-                        @include flexbox();
-                        @include align-items(center);
-                        div{
-                            margin-right:.20rem;
-                            i{
-                                color: rgb(153, 153, 153);
-                                &.i-2{
-                                    font-size: .12rem;
+                        > section:nth-child(2){
+                            @include flexbox();
+                            @include align-items(center);
+                            div{
+                                margin-right:.20rem;
+                                i{
+                                    color: rgb(153, 153, 153);
+                                    &.i-2{
+                                        font-size: .12rem;
+                                    }
+                                }
+                                span{
+                                    color: rgb(153, 153, 153);
                                 }
                             }
-                            span{
-                                color: rgb(153, 153, 153);
-                            }
+                            
                         }
-                        
                     }
                 }
             }

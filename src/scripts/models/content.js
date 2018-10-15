@@ -40,9 +40,37 @@ const article = () => {
     })
 }
 
+
+const yiguo = () => {
+    $.ajax({
+        type: 'post',
+        url: '/yvpi/ProductOpt/GetProductLists',
+        // url : "/yvpiCategoryOpt/GetCategory",
+        cache:true,  
+        data : {
+            "KeyWord" : "",
+            "CatCode" : "01_channelhome",
+            "PageIndex" : 1,
+            "PageSize" : 20,
+            "Sort" : "",
+        },
+        dataType : "json",
+        success: (result) => {
+            console.log(111)
+            console.log(result)
+        },
+        error : (error) => {
+            console.log(error)
+        }
+    })
+}
+
+// yiguo()
+
 export default {
     recommend,
     recommend2,
     production,
-    article
+    article,
+    yiguo
 }
